@@ -17,9 +17,7 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
         <selenium.version>2.53.0</selenium.version>
-        <bootstrap.version>3.3.6</bootstrap.version>
-        <simplemde.version>1.9.0</simplemde.version>
-        <jquery.version>1.11.1</jquery.version> <!-- Manually updated :( -->
+        <semanticui.version>2.1.8</semanticui.version>
         <overwrite.binaries>false</overwrite.binaries>
         <browser>firefox</browser>
         <threads>1</threads>
@@ -93,7 +91,7 @@
                         <configuration>
                             <scanIntervalSeconds>2</scanIntervalSeconds>
                             <daemon>true</daemon>
-                            <stopKey>sqsit</stopKey>
+                            <stopKey>spendhawkit</stopKey>
                             <stopPort>8081</stopPort>
                         </configuration>
                     </execution>
@@ -104,7 +102,7 @@
                             <goal>stop</goal>
                         </goals>
                         <configuration>
-                            <stopKey>sqsit</stopKey>
+                            <stopKey>spendhawkit</stopKey>
                             <stopPort>8081</stopPort>
                             <stopWait>5</stopWait>
                         </configuration>
@@ -173,7 +171,7 @@
             <scope>provided</scope>
         </dependency>
         <dependency>
-            <!-- Hibernate, the defacto ORM -->
+            <!-- Hibernate, the defacto Java ORM -->
             <groupId>org.hibernate</groupId>
             <artifactId>hibernate-core</artifactId>
             <version>5.1.0.Final</version>
@@ -197,23 +195,21 @@
             <version>2.3.3</version>
         </dependency>
         <dependency>
-            <!-- SQLite for the database -->
-            <groupId>org.xerial</groupId>
-            <artifactId>sqlite-jdbc</artifactId>
-            <version>3.8.11.2</version>
-        </dependency>
-        <dependency>
-            <!-- Twitter's Bootstrap -->
             <groupId>org.webjars</groupId>
-            <artifactId>bootstrap</artifactId>
-            <version>${bootstrap.version}</version>
+            <artifactId>Semantic-UI</artifactId>
+            <version>${semanticui.version}</version>
         </dependency>
+
         <dependency>
-            <!-- A simple, javascript based Markdown editor -->
-            <groupId>org.webjars.bower</groupId>
-            <artifactId>simplemde-markdown-editor</artifactId>
-            <version>${simplemde.version}</version>
+            <!-- TODO Move this to testing only! -->
+            <!-- DBUnit, easily reset database to a known state. -->
+            <groupId>org.dbunit</groupId>
+            <artifactId>dbunit</artifactId>
+            <version>2.5.1</version>
         </dependency>
+
+        <!-- TESTING DEPENDENCIES -->
+
         <dependency>
             <!-- BDD style testing framework -->
             <groupId>org.scalatest</groupId>
@@ -251,13 +247,6 @@
             <artifactId>xml-apis</artifactId>
             <version>1.4.01</version>
             <scope>test</scope>
-        </dependency>
-        <dependency>
-            <!-- TODO Move this to testing only! -->
-            <!-- DBUnit, easily reset database to a known state. -->
-            <groupId>org.dbunit</groupId>
-            <artifactId>dbunit</artifactId>
-            <version>2.5.1</version>
         </dependency>
     </dependencies>
 </project>
