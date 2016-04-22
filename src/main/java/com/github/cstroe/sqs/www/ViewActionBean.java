@@ -2,16 +2,13 @@ package com.github.cstroe.sqs.www;
 
 import com.github.cstroe.sqs.dao.NoteDao;
 import com.github.cstroe.sqs.dao.NotebookDao;
-import com.github.cstroe.sqs.model.Notebook;
 import com.github.cstroe.sqs.repository.RepositoryFactory;
-import com.github.cstroe.sqs.www.ext.NotebookTypeConverter;
 import net.sourceforge.stripes.action.DefaultHandler;
 import net.sourceforge.stripes.action.ForwardResolution;
 import net.sourceforge.stripes.action.Resolution;
 import net.sourceforge.stripes.action.UrlBinding;
 import net.sourceforge.stripes.validation.SimpleError;
 import net.sourceforge.stripes.validation.Validate;
-import net.sourceforge.stripes.validation.ValidateNestedProperties;
 
 import java.util.List;
 import java.util.Optional;
