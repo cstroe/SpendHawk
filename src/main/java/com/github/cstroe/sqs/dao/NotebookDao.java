@@ -1,6 +1,5 @@
 package com.github.cstroe.sqs.dao;
 
-import com.github.cstroe.sqs.model.Notebook;
 import com.google.common.base.Preconditions;
 
 import javax.persistence.Column;
@@ -12,7 +11,7 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "notebook")
-public class NotebookDao implements Notebook {
+public class NotebookDao {
     @Id
     @GeneratedValue(strategy= GenerationType.AUTO)
     @Column(name = "id")
@@ -30,7 +29,6 @@ public class NotebookDao implements Notebook {
         this.setName(name);
     }
 
-    @Override
     public long getId() {
         return id;
     }
@@ -39,7 +37,6 @@ public class NotebookDao implements Notebook {
         this.id = id;
     }
 
-    @Override
     public String getName() {
         return name;
     }
