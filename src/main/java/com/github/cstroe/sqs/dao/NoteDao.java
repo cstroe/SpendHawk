@@ -1,7 +1,5 @@
 package com.github.cstroe.sqs.dao;
 
-import com.github.cstroe.sqs.model.Note;
-import com.github.cstroe.sqs.model.Notebook;
 import com.google.common.base.Preconditions;
 
 import javax.persistence.Column;
@@ -15,7 +13,7 @@ import java.time.LocalDateTime;
 
 @Entity
 @Table(name = "note")
-public class NoteDao implements Note {
+public class NoteDao {
     @Id
     @GeneratedValue(strategy= GenerationType.AUTO)
     @Column(name = "id")
@@ -31,11 +29,11 @@ public class NoteDao implements Note {
     private String content;
 
     @ManyToOne(targetEntity = NotebookDao.class, optional = false)
-    private Notebook notebook;
+    private NotebookDao notebook;
 
     public NoteDao() {}
 
-    public NoteDao(long id, LocalDateTime created, String title, String content, Notebook notebook) {
+    public NoteDao(long id, LocalDateTime created, String title, String content, NotebookDao notebook) {
         setId(id);
         setCreated(created);
         setTitle(title);
@@ -43,7 +41,6 @@ public class NoteDao implements Note {
         setNotebook(notebook);
     }
 
-    @Override
     public long getId() {
         return id;
     }
@@ -53,7 +50,6 @@ public class NoteDao implements Note {
         this.id = id;
     }
 
-    @Override
     public LocalDateTime getCreated() {
         return created;
     }
@@ -63,7 +59,6 @@ public class NoteDao implements Note {
         this.created = created;
     }
 
-    @Override
     public String getTitle() {
         return title;
     }
@@ -73,7 +68,6 @@ public class NoteDao implements Note {
         this.title = title;
     }
 
-    @Override
     public String getContent() {
         return content;
     }
@@ -82,11 +76,11 @@ public class NoteDao implements Note {
         this.content = content;
     }
 
-    public Notebook getNotebook() {
+    public NotebookDao getNotebook() {
         return notebook;
     }
 
-    public void setNotebook(Notebook notebook) {
+    public void setNotebook(NotebookDao notebook) {
         Preconditions.checkNotNull(notebook);
         this.notebook = notebook;
     }
