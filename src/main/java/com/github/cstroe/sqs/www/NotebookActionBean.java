@@ -1,7 +1,6 @@
 package com.github.cstroe.sqs.www;
 
 import com.github.cstroe.sqs.dao.NotebookDao;
-import com.github.cstroe.sqs.repository.NotebookRepository;
 import com.github.cstroe.sqs.repository.RepositoryFactory;
 import net.sourceforge.stripes.action.DefaultHandler;
 import net.sourceforge.stripes.action.ForwardResolution;
@@ -17,7 +16,7 @@ import net.sourceforge.stripes.validation.ValidationMethod;
 import net.sourceforge.stripes.validation.ValidationState;
 
 @UrlBinding("/app/notebook/{$event}")
-public class NotebookActionBean extends BaseActionBean {
+public class NotebookActionBean extends BaseBean {
     @ValidateNestedProperties({
         @Validate(field="name", required = true, minlength = 1, on = "create")
     })

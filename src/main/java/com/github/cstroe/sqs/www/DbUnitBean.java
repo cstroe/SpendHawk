@@ -17,7 +17,7 @@ import java.sql.SQLException;
 
 // TODO move this to testing code
 @UrlBinding("/app/resetdb")
-public class DbUnitActionBean extends BaseActionBean {
+public class DbUnitBean extends BaseBean {
     @DefaultHandler
     public Resolution reset() {
         Session currentSession = HibernateSessionUtil.getCurrentSession();

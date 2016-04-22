@@ -11,7 +11,7 @@ import java.time.LocalDateTime;
 import java.util.Optional;
 
 @UrlBinding("/app/note/{$event}/{id}")
-public class NoteActionBean extends BaseActionBean {
+public class NoteActionBean extends BaseBean {
     @Validate(required = true, minvalue = 0, on = "edit")
     public long id;
 

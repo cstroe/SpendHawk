@@ -9,27 +9,21 @@ import net.sourceforge.stripes.action.ActionBeanContext;
 import java.util.ArrayList;
 import java.util.List;
 
-class BaseActionBean implements ActionBean {
+class BaseBean implements ActionBean {
     private ActionBeanContext context;
 
-    public void setContext(ActionBeanContext context) {
-        this.context = context;
-    }
-
+    @Override
     public ActionBeanContext getContext() {
         return context;
     }
 
-    public List<NoteDao> getRecentNotes() {
-        return new ArrayList<>();
+    @Override
+    public void setContext(ActionBeanContext context) {
+        this.context = context;
     }
 
     public void recordError() {
         // do some sort of error logging here
         throw new RuntimeException("Error was encountered");
-    }
-
-    public List<NotebookDao> getNotebooks() {
-        return RepositoryFactory.notebook().findAll();
     }
 }

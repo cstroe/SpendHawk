@@ -7,7 +7,7 @@ import org.scalatest.selenium.HtmlUnit
 class NotebookPageIT extends FunSpec with BeforeAndAfterEach with ShouldMatchers with HtmlUnit with Eventually {
 
   override def beforeEach {
-    go to StripesUtil.getUrl(classOf[DbUnitActionBean])
+    go to StripesUtil.getUrl(classOf[DbUnitBean])
     eventually {
       pageTitle shouldBe "View Notes"
     }

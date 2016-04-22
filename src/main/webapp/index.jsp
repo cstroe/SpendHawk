@@ -1,3 +1,3 @@
 <%
-	response.sendRedirect("/app/view/all");
+	response.sendRedirect("/app/login");
 %>

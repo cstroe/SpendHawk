@@ -14,7 +14,7 @@ import java.util.List;
 import java.util.Optional;
 
 @UrlBinding("/app/view/{$event}/{id}")
-public class ViewActionBean extends BaseActionBean {
+public class ViewActionBean extends BaseBean {
     @Validate(required = true, on = "notebook")
     public long id;
 
