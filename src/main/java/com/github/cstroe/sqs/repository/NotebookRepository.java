@@ -1,14 +1,12 @@
 package com.github.cstroe.sqs.repository;
 
 import com.github.cstroe.sqs.dao.NotebookDao;
-import com.github.cstroe.sqs.model.Notebook;
-import org.hibernate.Session;
 import org.hibernate.criterion.Restrictions;
 
 import java.util.List;
 import java.util.Optional;
 
-public class NotebookRepository implements GenericRepository<Notebook, NotebookDao> {
+public class NotebookRepository implements GenericRepository<NotebookDao> {
     @Override
     public Optional<NotebookDao> findById(long id) {
         return Optional.ofNullable((NotebookDao)getSession().createCriteria(NotebookDao.class)
@@ -16,8 +14,8 @@ public class NotebookRepository implements GenericRepository<Notebook, NotebookD
                 .uniqueResult());
     }
 
-    public Optional<Notebook> findByName(String name) {
-        return Optional.ofNullable((Notebook)getSession().createCriteria(NotebookDao.class)
+    public Optional<NotebookDao> findByName(String name) {
+        return Optional.ofNullable((NotebookDao)getSession().createCriteria(NotebookDao.class)
                 .add(Restrictions.eq("name", name))
                 .uniqueResult());
     }

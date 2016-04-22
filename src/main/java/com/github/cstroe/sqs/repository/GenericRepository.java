@@ -7,10 +7,9 @@ import java.util.List;
 import java.util.Optional;
 
 /**
- * @param <MODEL> A type in our model.
  * @param <DAO> The DAO implementation of the model interface.
  */
-public interface GenericRepository<MODEL, DAO extends MODEL> {
+public interface GenericRepository<DAO> {
     Optional<DAO> findById(long id);
     void save(DAO dao);
     List<DAO> findAll();

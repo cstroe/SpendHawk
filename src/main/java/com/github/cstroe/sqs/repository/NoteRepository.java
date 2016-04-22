@@ -1,14 +1,13 @@
 package com.github.cstroe.sqs.repository;
 
 import com.github.cstroe.sqs.dao.NoteDao;
-import com.github.cstroe.sqs.model.Note;
-import com.github.cstroe.sqs.model.Notebook;
+import com.github.cstroe.sqs.dao.NotebookDao;
 import org.hibernate.criterion.Restrictions;
 
 import java.util.List;
 import java.util.Optional;
 
-public class NoteRepository implements GenericRepository<Note, NoteDao> {
+public class NoteRepository implements GenericRepository<NoteDao> {
     @Override
     public Optional<NoteDao> findById(long id) {
         return Optional.ofNullable((NoteDao)getSession().createCriteria(NoteDao.class)
@@ -28,7 +27,7 @@ public class NoteRepository implements GenericRepository<Note, NoteDao> {
     }
 
     @SuppressWarnings("unchecked")
-    public List<NoteDao> findByNotebook(Notebook notebook) {
+    public List<NoteDao> findByNotebook(NotebookDao notebook) {
         return (List<NoteDao>) getSession().createCriteria(NoteDao.class)
                 .createCriteria("notebook")
                 .add(Restrictions.eq("id", notebook.getId()))
