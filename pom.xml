@@ -3,14 +3,14 @@
 
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>net.caseydunham</groupId>
-    <artifactId>stripes-quickstart</artifactId>
+    <groupId>com.github.cstroe</groupId>
+    <artifactId>spendhawk</artifactId>
     <packaging>war</packaging>
-    <version>1.0-SNAPSHOT</version>
+    <version>0.1-SNAPSHOT</version>
 
-    <name>stripes-quickstart</name>
+    <name>spendhawk</name>
     <description>
-        A starting point for writing a webapp with the Stripes Framework
+        A personal expense tracker and financial manager.
     </description>
 
     <properties>
