@@ -1,7 +1,6 @@
 package com.github.cstroe.sqs.www.ext;
 
 import com.github.cstroe.sqs.dao.NotebookDao;
-import com.github.cstroe.sqs.model.Notebook;
 import com.github.cstroe.sqs.repository.RepositoryFactory;
 import net.sourceforge.stripes.validation.SimpleError;
 import net.sourceforge.stripes.validation.TypeConverter;
@@ -11,13 +10,13 @@ import java.util.Collection;
 import java.util.Locale;
 import java.util.Optional;
 
-public class NotebookTypeConverter implements TypeConverter<Notebook> {
+public class NotebookTypeConverter implements TypeConverter<NotebookDao> {
 
     @Override
     public void setLocale(Locale locale) {}
 
     @Override
-    public Notebook convert(String input, Class<? extends Notebook> targetType, Collection<ValidationError> errors) {
+    public NotebookDao convert(String input, Class<? extends NotebookDao> targetType, Collection<ValidationError> errors) {
         long id;
         try {
             id = Long.parseLong(input);
