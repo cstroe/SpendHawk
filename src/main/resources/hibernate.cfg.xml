@@ -27,7 +27,6 @@
         <!-- Drop and re-create the database schema on startup -->
         <property name="hbm2ddl.auto">create</property>
 
-        <mapping class="com.github.cstroe.sqs.dao.NotebookDao" />
-        <mapping class="com.github.cstroe.sqs.dao.NoteDao" />
+        <mapping class="com.github.cstroe.sqs.dao.UserDao"/>
     </session-factory>
 </hibernate-configuration>
