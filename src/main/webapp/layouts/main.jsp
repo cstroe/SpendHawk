@@ -16,10 +16,6 @@
 
     <body>
       <jsp:include page="scripts.jsp"/>
-
-      <div class="container">
-      </div>
-
       <s:layout-component name="pageBody"/>
     </body>
     </html>
