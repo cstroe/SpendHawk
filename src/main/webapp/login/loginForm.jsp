@@ -42,12 +42,12 @@
             <s:errors/>
             <div class="inline field">
               <div class="field">
-                <input placeholder="Enter username" type="text" name="username"/>
+                <input placeholder="Enter username" type="text" name="username" id="username_button"/>
               </div>
             </div>
             <div class="inline field">
               <div class="field">
-                <input placeholder="Enter password" type="text" name="password"/>
+                <input placeholder="Enter password" type="password" name="password"/>
               </div>
             </div>
             <div class="inline field">
@@ -56,8 +56,13 @@
                 <label>Remember me</label>
               </div>
             </div>
-            <button class="ui button" type="submit">Login</button>
+            <button class="ui fluid large primary button" type="submit">Login</button>
           </s:form>
+          <script>
+            $(function() {
+              $('#username_button').focus();
+            });
+          </script>
         </div>
       </div>
     </div>
