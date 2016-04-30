@@ -52,12 +52,6 @@
 
     <filter-mapping>
         <filter-name>StripesFilter</filter-name>
-        <url-pattern>*.jsp</url-pattern>
-        <dispatcher>REQUEST</dispatcher>
-    </filter-mapping>
-
-    <filter-mapping>
-        <filter-name>StripesFilter</filter-name>
         <servlet-name>StripesDispatcher</servlet-name>
         <dispatcher>REQUEST</dispatcher>
     </filter-mapping>
@@ -68,20 +62,44 @@
         <load-on-startup>1</load-on-startup>
     </servlet>
 
+    <servlet>
+        <servlet-name>Freemarker</servlet-name>
+        <servlet-class>freemarker.ext.servlet.FreemarkerServlet</servlet-class>
+
+        <init-param>
+            <param-name>TemplatePath</param-name>
+            <param-value>/</param-value>
+        </init-param>
+        <init-param>
+            <param-name>template_update_delay</param-name>
+            <param-value>0</param-value> <!-- 0 is for dev only! Use higher value otherwise. -->
+        </init-param>
+        <load-on-startup>1</load-on-startup>
+    </servlet>
+
     <servlet-mapping>
         <servlet-name>StripesDispatcher</servlet-name>
         <url-pattern>/app/*</url-pattern>
     </servlet-mapping>
 
+    <servlet-mapping>
+        <servlet-name>Freemarker</servlet-name>
+        <url-pattern>*.ftl</url-pattern>
+    </servlet-mapping>
+
     <security-constraint>
         <!--
-            Prevent the visiting of JSP files from outside the servlet container.
+            Prevent the visiting of templates files from outside the servlet container.
             RequestDispatcher.forward/include should and will still work.
             Forces all requests to go through action beans.
         -->
         <web-resource-collection>
             <web-resource-name>Java Server Pages</web-resource-name>
             <url-pattern>*.jsp</url-pattern>
+        </web-resource-collection>
+        <web-resource-collection>
+            <web-resource-name>Freemarker Templates</web-resource-name>
+            <url-pattern>*.ftl</url-pattern>
         </web-resource-collection>
         <auth-constraint>
             <!-- Nobody is allowed to visit these -->

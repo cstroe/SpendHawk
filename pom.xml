@@ -31,21 +31,21 @@
     <build>
         <resources>
             <resource>
-                <!-- Filter jsversions.properties so that we can
+                <!-- Filter versions.properties so that we can
                      access our dependency versions in the app -->
                 <directory>src/main/resources</directory>
                 <filtering>true</filtering>
                 <includes>
-                    <include>jsversions.properties</include>
+                    <include>versions.properties</include>
                 </includes>
             </resource>
             <resource>
                 <!-- We don't want to filter any other files
-                     besides jsversions.properties -->
+                     besides versions.properties -->
                 <directory>src/main/resources</directory>
                 <filtering>false</filtering>
                 <excludes>
-                    <exclude>jsversions.properties</exclude>
+                    <exclude>versions.properties</exclude>
                 </excludes>
             </resource>
         </resources>
@@ -157,6 +157,12 @@
             <groupId>net.sourceforge.stripes</groupId>
             <artifactId>stripes</artifactId>
             <version>1.6.0</version>
+        </dependency>
+        <dependency>
+            <!-- An alternative templating language to JSP -->
+            <groupId>org.freemarker</groupId>
+            <artifactId>freemarker</artifactId>
+            <version>2.3.24-incubating</version>
         </dependency>
         <dependency>
             <!-- Apache Shiro security framework -->

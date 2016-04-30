@@ -1,16 +1,13 @@
 package com.github.cstroe.sqs.www;
 
-import com.github.cstroe.sqs.dao.NoteDao;
-import com.github.cstroe.sqs.dao.NotebookDao;
-import com.github.cstroe.sqs.repository.RepositoryFactory;
 import net.sourceforge.stripes.action.ActionBean;
 import net.sourceforge.stripes.action.ActionBeanContext;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.ResourceBundle;
 
 class BaseBean implements ActionBean {
     private ActionBeanContext context;
+    private ResourceBundle bundle;
 
     @Override
     public ActionBeanContext getContext() {
@@ -25,5 +22,17 @@ class BaseBean implements ActionBean {
     public void recordError() {
         // do some sort of error logging here
         throw new RuntimeException("Error was encountered");
+    }
+
+    public String getResource(String key) {
+        if(bundle == null) {
+            bundle = ResourceBundle.getBundle("versions");
+        }
+
+        if(bundle.containsKey(key)) {
+            return bundle.getString(key);
+        } else {
+            return "";
+        }
     }
 }

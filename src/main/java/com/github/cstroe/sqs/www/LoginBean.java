@@ -9,6 +9,6 @@ import net.sourceforge.stripes.action.UrlBinding;
 public class LoginBean extends BaseBean {
     @DefaultHandler
     public Resolution loginForm() {
-        return new ForwardResolution("/login/loginForm.jsp");
+        return new ForwardResolution("/login/loginForm.ftl");
     }
 }
