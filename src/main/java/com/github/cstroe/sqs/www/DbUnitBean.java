@@ -36,6 +36,6 @@ public class DbUnitBean extends BaseBean {
             }
         });
 
-        return new RedirectResolution(ViewActionBean.class);
+        return new RedirectResolution(HomeBean.class);
     }
 }
