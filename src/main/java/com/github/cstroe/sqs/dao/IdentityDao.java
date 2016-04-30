@@ -10,30 +10,30 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "notebook")
-public class NotebookDao {
+@Table(name = "identity")
+public class IdentityDao implements IsPersisted {
     @Id
-    @GeneratedValue(strategy= GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "id")
     private long id;
 
-    @Column(name = "name", unique = true, nullable = false)
+    @Column(name = "name", nullable = false)
     private String name;
 
-    public NotebookDao() {}
+    public IdentityDao() {}
 
-    public NotebookDao(long id, String name) {
-        Preconditions.checkArgument(id >= 0);
-        Preconditions.checkNotNull(name);
+    public IdentityDao(long id, String username) {
         this.setId(id);
-        this.setName(name);
+        this.setName(username);
     }
 
+    @Override
     public long getId() {
         return id;
     }
 
     public void setId(long id) {
+        Preconditions.checkArgument(id >= 0);
         this.id = id;
     }
 
@@ -42,6 +42,11 @@ public class NotebookDao {
     }
 
     public void setName(String name) {
+        Preconditions.checkNotNull(name);
+        Preconditions.checkArgument(!name.isEmpty());
+        Preconditions.checkArgument(!name.contains(" "));
+        Preconditions.checkArgument(!name.contains("\t"));
+        Preconditions.checkArgument(!name.contains("\n"));
         this.name = name;
     }
 }
