@@ -214,6 +214,19 @@
             <version>2.3.3</version>
         </dependency>
 
+        <dependency>
+            <!-- A library to represent money. -->
+            <groupId>org.joda</groupId>
+            <artifactId>joda-money</artifactId>
+            <version>0.11</version>
+        </dependency>
+        <dependency>
+            <!-- Conversion of objects to and from strings. -->
+            <groupId>org.joda</groupId>
+            <artifactId>joda-convert</artifactId>
+            <version>1.8</version>
+        </dependency>
+
         <!-- Frontend dependencies -->
         <dependency>
             <groupId>org.webjars</groupId>
