@@ -6,6 +6,7 @@ import org.joda.money.Money;
 import javax.persistence.*;
 import java.math.BigDecimal;
 import java.util.Collection;
+import java.util.Collections;
 
 public class AccountDao implements IsPersisted {
     @Id
@@ -48,6 +49,9 @@ public class AccountDao implements IsPersisted {
     }
 
     public Collection<LineItemDao> getLineItems() {
+        if(lineitems == null) {
+            return Collections.emptyList();
+        }
         return lineitems;
     }
 
@@ -55,11 +59,11 @@ public class AccountDao implements IsPersisted {
         this.lineitems = lineitems;
     }
 
-    public BigDecimal getBalance() {
+    public double getBalance() {
         Money sum = Money.zero(CurrencyUnit.USD);
         for(LineItemDao li : getLineItems()) {
             sum = sum.plus(li.getAmount());
         }
-        return sum.getAmount();
+        return sum.getAmount().doubleValue();
     }
 }
