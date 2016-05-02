@@ -1,22 +1,26 @@
 package com.github.cstroe.sqs.dao;
 
-import com.github.cstroe.sqs.model.Account;
-import com.github.cstroe.sqs.model.User;
+import org.joda.money.CurrencyUnit;
+import org.joda.money.Money;
 
-import javax.persistence.Column;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.ManyToOne;
+import javax.persistence.*;
+import java.math.BigDecimal;
+import java.util.Collection;
 
-public class AccountDao implements Account {
+public class AccountDao implements IsPersisted {
     @Id
-    @GeneratedValue(strategy= GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "id")
     private long id;
 
-    @ManyToOne(targetEntity = UserDao.class, optional = false)
-    private User user;
+    @ManyToOne(targetEntity = IdentityDao.class, optional = false)
+    private IdentityDao identity;
+
+    @Column(name = "name")
+    private String name;
+
+    @OneToMany(targetEntity = LineItemDao.class)
+    private Collection<LineItemDao> lineitems;
 
     @Override
     public long getId() {
@@ -27,12 +31,35 @@ public class AccountDao implements Account {
         this.id = id;
     }
 
-    @Override
-    public User getUser() {
-        return user;
+    public IdentityDao getIdentity() {
+        return identity;
     }
 
-    public void setUser(User user) {
-        this.user = user;
+    public void setIdentity(IdentityDao identity) {
+        this.identity = identity;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public Collection<LineItemDao> getLineItems() {
+        return lineitems;
+    }
+
+    public void setLineitems(Collection<LineItemDao> lineitems) {
+        this.lineitems = lineitems;
+    }
+
+    public BigDecimal getBalance() {
+        Money sum = Money.zero(CurrencyUnit.USD);
+        for(LineItemDao li : getLineItems()) {
+            sum = sum.plus(li.getAmount());
+        }
+        return sum.getAmount();
     }
 }
