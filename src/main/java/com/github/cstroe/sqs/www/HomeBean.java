@@ -18,17 +18,18 @@ public class HomeBean extends BaseBean {
 
     public List<AccountDao> getAccounts() {
         List<AccountDao> daoList = new ArrayList<>();
-        daoList.add(generateAccount(1));
-        daoList.add(generateAccount(2));
-        daoList.add(generateAccount(3));
-        daoList.add(generateAccount(4));
-        daoList.add(generateAccount(5));
+        daoList.add(generateAccount(1, "One"));
+        daoList.add(generateAccount(2, "Two"));
+        daoList.add(generateAccount(3, "Three"));
+        daoList.add(generateAccount(4, "Four"));
+        daoList.add(generateAccount(5, "Five"));
         return daoList;
     }
 
-    private AccountDao generateAccount(long id) {
+    private AccountDao generateAccount(long id, String name) {
         AccountDao dao = new AccountDao();
         dao.setId(id);
+        dao.setName(name);
         return dao;
     }
 }

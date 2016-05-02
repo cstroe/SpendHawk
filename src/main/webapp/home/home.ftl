@@ -23,7 +23,7 @@
             [#list actionBean.accounts as account]
                 <div class="item">
                     <div class="content">
-                        Account ${account.id}
+                        Account ${account.name}
                     </div>
                 </div>
             [/#list]
