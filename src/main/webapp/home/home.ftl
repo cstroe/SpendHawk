@@ -19,7 +19,7 @@
         </h3>
     </div>
 
-    <table class="ui celled table">
+    <table class="ui celled striped compact table">
         <thead>
             <tr>
                 <th>Account</th>
@@ -29,7 +29,7 @@
         <tbody>
             [#list actionBean.accounts as account]
             <tr>
-                <td>${account.name}</td>
+                <td><i class="dollar icon"></i>${account.name}</td>
                 <td>${account.balance}</td>
             </tr>
             [/#list]
